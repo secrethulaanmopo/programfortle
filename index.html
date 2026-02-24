@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>I'm Sorry po 😓</title>
   <style>
-    html, body {
-      scroll-behavior: smooth;
-    }
+    html, body { scroll-behavior: smooth; }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
@@ -33,25 +31,16 @@
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
       position: relative;
-      overflow: hidden;
       z-index: 2;
     }
 
-    h1 {
-      margin-top: 0;
-      font-size: 1.5em;
-      color: #111;
-    }
-
-    p {
-      color: #333;
-      font-size: 1em;
-    }
+    h1 { margin-top: 0; font-size: 1.5em; color: #111; }
+    p { color: #333; font-size: 1em; }
 
     button {
       background: #4a4a4a;
       border: none;
-      color: #ffffff;
+      color: #fff;
       padding: 10px 15px;
       border-radius: 10px;
       font-size: 14px;
@@ -61,11 +50,7 @@
       width: 100%;
       max-width: 260px;
     }
-
-    button:hover {
-      transform: scale(1.05);
-      background: #2f2f2f;
-    }
+    button:hover { transform: scale(1.05); background: #2f2f2f; }
 
     #letter {
       display: none;
@@ -83,17 +68,10 @@
       pointer-events: none;
     }
 
-    @keyframes floatUp {
-      from { transform: translateY(0); opacity: 1; }
-      to { transform: translateY(-150px); opacity: 0; }
-    }
+    @keyframes floatUp { from { transform: translateY(0); opacity: 1; } to { transform: translateY(-150px); opacity: 0; } }
 
-    #game {
-      display: none;
-      margin-top: 15px;
-    }
+    #game { display: none; margin-top: 15px; }
 
-    /* Side images CSS */
     .side-img {
       position: fixed;
       width: 120px;
@@ -104,11 +82,7 @@
       opacity: 0.9;
       transition: transform 0.3s ease;
     }
-
-    .side-img:hover {
-      transform: scale(1.05);
-    }
-
+    .side-img:hover { transform: scale(1.05); }
     .left-img { left: 15px; }
     .right-img { right: 15px; }
     .top-img { top: 60px; }
@@ -125,9 +99,9 @@
 </head>
 <body>
   <!-- Side images -->
-  <img src="pic1.jpg" class="side-img left-img top-img">
-  <img src="pic2.jpg" class="side-img right-img middle-img">
-  <img src="pic3.jpg" class="side-img left-img bottom-img">
+  <img src="images/pic1.jpg" class="side-img left-img top-img">
+  <img src="images/pic2.jpg" class="side-img right-img middle-img">
+  <img src="images/pic3.jpg" class="side-img left-img bottom-img">
 
   <div class="card" id="card">
     <h1>Hi po Natsumi</h1>
@@ -137,18 +111,18 @@
 
     <div id="letter">
       <p>
-        Natsumi, I know i messed up badly and I deeply regret for what I did to you. 
-        I made this website and small program to show you how much I do really love you and deeply care 
-        about your feelings, please take me back and I'm sorry for making another away between us po.
+        Natsumi, I know i messed up badly and I deeply regret what I did to you. 
+        I made this website and small program to show you how much I really love you and care 
+        about your feelings. Please take me back, I'm sorry for creating distance between us po.
       </p>
       <p>
-        I promise, I'm trying to be more better for the both of us, I'm sorry balik kana please po.
+        I promise I'm trying to be better for both of us. I'm sorry, balik kana please po.
       </p>
 
       <button onclick="startGame()">Tap me please 💕</button>
       <button onclick="closeLetter()">Exit Letter ✖️</button>
       <p style="margin-top:15px; font-size:0.9em; color:#555;">
-        Natsumi, i know i messed up and i know you don't wanna talk to me right now as much, but please don't forget kahit nag aaway tayo wag mo kakalimutan na mahal na mahal parin kita po.
+        Natsumi, I know I messed up and you might not want to talk to me right now, but please don't forget kahit nag aaway tayo wag mo kakalimutan na mahal na mahal pa rin kita po.
       </p>
     </div>
 
@@ -188,12 +162,9 @@
       const heart = document.createElement('div');
       heart.className = 'heart';
       heart.textContent = '❤️';
-
       heart.style.left = Math.random() * 90 + '%';
       heart.style.bottom = '0px';
-
       document.querySelector('.card').appendChild(heart);
-
       setTimeout(() => { heart.remove(); }, 2000);
     }
   </script>

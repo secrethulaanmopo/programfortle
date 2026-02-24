@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>I'm Sorry po 😓</title>
+  <style>
+    html, body {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #2b2b2b, #6e6e6e);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      color: #222;
+    }
+
+    .card {
+      background: #f5f5f5;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      max-width: 90%;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+      overflow: hidden;
+      z-index: 2;
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 1.5em;
+      color: #111;
+    }
+
+    p {
+      color: #333;
+      font-size: 1em;
+    }
+
+    button {
+      background: #4a4a4a;
+      border: none;
+      color: #ffffff;
+      padding: 10px 15px;
+      border-radius: 10px;
+      font-size: 14px;
+      cursor: pointer;
+      margin: 8px;
+      transition: transform 0.15s ease, background 0.2s ease;
+      width: 100%;
+      max-width: 260px;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: #2f2f2f;
+    }
+
+    #letter {
+      display: none;
+      margin-top: 15px;
+      line-height: 1.5;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 18px;
+      animation: floatUp 2s linear forwards;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-150px); opacity: 0; }
+    }
+
+    #game {
+      display: none;
+      margin-top: 15px;
+    }
+
+    /* Side images CSS */
+    .side-img {
+      position: fixed;
+      width: 120px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      object-fit: cover;
+      z-index: 1;
+      opacity: 0.9;
+      transition: transform 0.3s ease;
+    }
+
+    .side-img:hover {
+      transform: scale(1.05);
+    }
+
+    .left-img { left: 15px; }
+    .right-img { right: 15px; }
+    .top-img { top: 60px; }
+    .middle-img { top: 180px; }
+    .bottom-img { bottom: 60px; }
+
+    @media (max-width: 600px) {
+      .side-img { display: none; }
+      .card { padding: 15px; }
+      h1 { font-size: 1.3em; }
+      p, button { font-size: 0.9em; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Side images -->
+  <img src="pic1.jpg" class="side-img left-img top-img">
+  <img src="pic2.jpg" class="side-img right-img middle-img">
+  <img src="pic3.jpg" class="side-img left-img bottom-img">
+
+  <div class="card" id="card">
+    <h1>Hi po Natsumi</h1>
+    <p>I made something for you.</p>
+
+    <button onclick="openLetter()">Click me to open my apology 💌</button>
+
+    <div id="letter">
+      <p>
+        Natsumi, I know i messed up badly and I deeply regret for what I did to you. 
+        I made this website and small program to show you how much I do really love you and deeply care 
+        about your feelings, please take me back and I'm sorry for making another away between us po.
+      </p>
+      <p>
+        I promise, I'm trying to be more better for the both of us, I'm sorry balik kana please po.
+      </p>
+
+      <button onclick="startGame()">Tap me please 💕</button>
+      <button onclick="closeLetter()">Exit Letter ✖️</button>
+      <p style="margin-top:15px; font-size:0.9em; color:#555;">
+        Natsumi, i know i messed up and i know you don't wanna talk to me right now as much, but please don't forget kahit nag aaway tayo wag mo kakalimutan na mahal na mahal parin kita po.
+      </p>
+    </div>
+
+    <div id="game">
+      <p>Tap the hearts as many times as you want 💖</p>
+      <button onclick="spawnHeart()">Tap me 💕</button>
+      <p id="counter">Hearts tapped: 0</p>
+    </div>
+  </div>
+
+  <script>
+    let count = 0;
+
+    function openLetter() {
+      const letter = document.getElementById('letter');
+      letter.style.display = 'block';
+      setTimeout(() => {
+        letter.style.opacity = '1';
+        letter.style.transform = 'translateY(0)';
+      }, 10);
+      letter.scrollIntoView({ behavior: "smooth" });
+    }
+
+    function closeLetter() {
+      document.getElementById('letter').style.display = 'none';
+      document.getElementById('game').style.display = 'none';
+    }
+
+    function startGame() {
+      document.getElementById('game').style.display = 'block';
+    }
+
+    function spawnHeart() {
+      count++;
+      document.getElementById('counter').textContent = 'Hearts tapped: ' + count;
+
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.textContent = '❤️';
+
+      heart.style.left = Math.random() * 90 + '%';
+      heart.style.bottom = '0px';
+
+      document.querySelector('.card').appendChild(heart);
+
+      setTimeout(() => { heart.remove(); }, 2000);
+    }
+  </script>
+</body>
+</html>
